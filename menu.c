@@ -41,7 +41,7 @@ int main(){
   if (setup == 0) print_menu(items);
 
   int fd1, fd2, i;
-  char line[BUFFER_SIZE];
+  char order[BUFFER_SIZE], line[BUFFER_SIZE];
 
   mkfifo("menu_p", 0644);
   //printf("made menu pipe\n");
@@ -54,17 +54,20 @@ int main(){
   while (1){
     fseek(stdin,0,SEEK_END);
     printf("What would you like to order? ");
-    fgets(line, sizeof(line), stdin);
+    fgets(order, sizeof(order), stdin);
     //printf("\n");
-    //remove new line character from end
-    for (i=0; line[i]; i++){
-      if (line[i]=='\n')line[i]='\0';
+    //remove new order character from end
+    for (i=0; order[i]; i++){
+      if (order[i]=='\n')order[i]='\0';
     }
-    write(fd1, line, sizeof(line));
+    write(fd1, order, sizeof(line));
     //printf("wrote to menu pipe\n");
     close(fd1);
 
     fd2 = open("system_p", O_RDONLY);
+
+    read(fd2, line, sizeof(line));
+    printf("[%s]\n", line);
 
     close(fd2);
 

@@ -11,7 +11,7 @@
 int BUFFER_SIZE = 256;
 
 int main(){
-  char line[BUFFER_SIZE];
+  char order[BUFFER_SIZE], line[BUFFER_SIZE];
   int fd1, fd2, i;
   //printf("got here 1\n");
 
@@ -20,14 +20,15 @@ int main(){
 
   //printf("opened menu pipe for read\n");
   while (1){
-    read(fd1, line, sizeof(line));
-    printf("%s\n", line);
+    read(fd1, order, sizeof(order));
 
     close(fd1);
 
     fd2 = open("system_p", O_WRONLY);
     //printf("opened system pipe for writing\n");
 
+    strncpy(line, "okay",sizeof(line)-1);
+    write(fd2, line, sizeof(line));
     close(fd2);
   }
 
