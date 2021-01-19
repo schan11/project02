@@ -21,16 +21,16 @@ int main(){
   //printf("opened menu pipe for read\n");
   while (1){
     read(fd1, order, sizeof(order));
-
-    close(fd1);
-
     fd2 = open("system_p", O_WRONLY);
-    //printf("opened system pipe for writing\n");
 
+    //printf("opened system pipe for writing\n");
     strncpy(line, "okay",sizeof(line)-1);
     write(fd2, line, sizeof(line));
-    close(fd2);
+
   }
+
+  close(fd1);
+  close(fd2);
 
   return 0;
 }
