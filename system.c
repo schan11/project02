@@ -24,7 +24,7 @@ int main(){
     fd2 = open("system_p", O_WRONLY);
 
     //printf("opened system pipe for writing\n");
-    strncpy(line, "okay",sizeof(line)-1);
+    strncpy(line, order,sizeof(line)-1);
     write(fd2, line, sizeof(line));
 
   }

@@ -35,32 +35,49 @@ int setup(){
   return choice;
 }
 
+void choose_category(int start){
+  char teas[] = "./teas";
+  char desserts[] = "./desserts";
+  char appetizers[] = "./appetizers";
+
+  if (start == 0) print_menu(teas);
+  else if (start == 1) print_menu(desserts);
+  else if (start == 2) print_menu(appetizers);
+}
+
 //allows customer to place their order
 void order(){
   int fd1, fd2, i, item_count=0;
   char order[BUFFER_SIZE], line[BUFFER_SIZE];
 
+  //create and open client pipe for writing
   mkfifo("menu_p", 0644);
-  //printf("made menu pipe\n");
 
   fd1 = open("menu_p", O_WRONLY);
-  //printf("%d\n", fd1);
-  //if (fd1==-1)printf("error: %s\n", strerror(errno));
 
-  //printf("opened pipes in menu\n");
   while (1){
     fseek(stdin,0,SEEK_END);
-    //printf("%d\n", item_count);
+
+    //prompt user for input to order
     if (item_count == 0) printf("What would you like to order? ");
     else printf("Anything else? ");
     fgets(order, sizeof(order), stdin);
-    //printf("\n");
-    //remove new order character from end
+
+    //go back to main menu if requested by customer (entering 0)
+    const char *c = order;
+    if (strncmp(c, "0",1)==0) {
+      int main_menu = setup();
+      choose_category(main_menu);
+    }
+
+    //remove new line character from end
     for (i=0; order[i]; i++){
       if (order[i]=='\n')order[i]='\0';
     }
+
+    //write the order to the system end
     write(fd1, order, sizeof(line));
-    //printf("wrote to menu pipe\n");
+
     fd2 = open("system_p", O_RDONLY);
     read(fd2, line, sizeof(line));
     printf("[%s]\n", line);
@@ -74,16 +91,9 @@ void order(){
 
 //main
 int main(){
-  int start = setup();
-
-  char teas[] = "./teas";
-  char desserts[] = "./desserts";
-  char appetizers[] = "./appetizers";
-
-  if (start == 0) print_menu(teas);
-  else if (start == 1) print_menu(desserts);
-  else if (start == 2) print_menu(appetizers);
-
+  //set up main menu, choose category, and allow customer to order
+  int main_menu = setup();
+  choose_category(main_menu);
   order();
 
   return 0;
