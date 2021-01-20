@@ -1,6 +1,6 @@
-all: menu.o system.o order.o
+all: menu.o system.o order.o customer.o
 	gcc -o menu menu.o
-	gcc -o system system.o order.o
+	gcc -o system system.o order.o customer.o
 
 menu.o: menu.c menu.h
 	gcc -c menu.c
@@ -10,6 +10,9 @@ system.o: system.c system.h
 
 order.o: order.c order.h
 	gcc -c order.c
+
+customer.o: customer.c customer.h
+	gcc -c customer.c
 
 clean:
 	rm *.o
