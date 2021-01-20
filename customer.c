@@ -70,6 +70,7 @@ struct customer *checkout(struct customer *cust) {
 }
 
 void print_customer(struct customer *cust) {
+    /*
 	char dine[100];
 
 	if (cust->dining == -1)
@@ -80,9 +81,9 @@ void print_customer(struct customer *cust) {
 		strcpy(dine, "pick up");
 	else
 		strcpy(dine, "no dining option");
-
+*/
 	printf("First name: %s\n", cust->first_name);
 	printf("Last  name: %s\n", cust->last_name);
 	printf("Credit Card: %d\n", cust->credit_card);
-	printf("Dining Option: %s\n\n", dine);
+	printf("Dining Option: %s\n\n", cust->dine);
 }
