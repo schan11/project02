@@ -12,3 +12,9 @@ struct order * place_order(char * i, double p){
 
   return new_order;
 }
+
+struct order * insert_order(struct order * first, char * i, double p){
+    struct order * o = new_order(i, p);
+    o -> next = first;
+    return o;
+}

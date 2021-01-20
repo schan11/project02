@@ -19,6 +19,11 @@ int main(){
   fd1 = open("menu_p", O_RDONLY);
 
   //linked list
+    struct order * order_list = NULL;
+    struct order * order1 = insert_order(order_list, "Milk Tea", 4.00);
+    struct order * order2 = insert_order(order1, "Green Milk Tea", 4.00);
+    struct order * order3 = insert_order(order2, "Mango Mochi", 3.00);
+    struct order * order4 = insert_order(order3, "Tiramisu", 5.00);
 
   //printf("opened menu pipe for read\n");
   while (1){
