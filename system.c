@@ -18,6 +18,8 @@ int main(){
   mkfifo("system_p", 0644);
   fd1 = open("menu_p", O_RDONLY);
 
+  //linked list
+
   //printf("opened menu pipe for read\n");
   while (1){
     read(fd1, order, sizeof(order));
@@ -27,7 +29,15 @@ int main(){
     strncpy(line, order,sizeof(line)-1);
     write(fd2, line, sizeof(line));
 
+
+    //struct order *i = place_order(line, price);
+
+    //add i to linked list
+
+    //ask if order is finished and break
   }
+
+  //go through linked list, calculate price, print out entire order, 
 
   close(fd1);
   close(fd2);
