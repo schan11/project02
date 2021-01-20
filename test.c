@@ -30,7 +30,7 @@ int main() {
 
 	print_customer(bob);
 
-	printf("%s %s\n%d\n%s\n\n", get_first_name(bob), get_last_name(bob), get_card(bob), get_dining(bob));
+	printf("%s %s\n%d\n\n", get_first_name(bob), get_last_name(bob), get_card(bob));  //  get_dining(bob)
 
 	checkout(bob);
 
