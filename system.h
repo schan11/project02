@@ -1,3 +1,3 @@
 #ifndef SYSTEM_H
-#DEFINE SYSTEM_H
+#define SYSTEM_H
 #endif

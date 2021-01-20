@@ -70,6 +70,11 @@ void order(){
       choose_category(main_menu);
     }
 
+    if (strncmp(order, "1",1)==0) {
+      printf("Proceeding to checkout...\n");
+      break;
+    }
+
     //remove new line character from end
     for (i=0; order[i]; i++){
       if (order[i]=='\n')order[i]='\0';
@@ -95,6 +100,8 @@ int main(){
   int main_menu = setup();
   choose_category(main_menu);
   order();
+
+  printf("checkout here\n");
 
   return 0;
 }
