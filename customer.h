@@ -16,7 +16,7 @@ struct customer *modify_dining(struct customer *, int);
 char* get_first_name(struct customer *);
 char* get_last_name(struct customer *);
 int get_card(struct customer *);
-// char* get_dining(struct customer *);
+char* get_dining(struct customer *);
 struct customer *checkout(struct customer *);
 void print_customer(struct customer *);
 
