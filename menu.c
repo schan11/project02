@@ -70,11 +70,6 @@ void order(){
       choose_category(main_menu);
     }
 
-    if (strncmp(order, "1",1)==0) {
-      printf("Proceeding to checkout...\n");
-      break;
-    }
-
     //remove new line character from end
     for (i=0; order[i]; i++){
       if (order[i]=='\n')order[i]='\0';
@@ -83,12 +78,20 @@ void order(){
     //write the order to the system end
     write(fd1, order, sizeof(line));
 
+    if (strncmp(order, "1",1)==0) {
+      printf("Proceeding to checkout...\n");
+      break;
+    }
+
     fd2 = open("system_p", O_RDONLY);
     read(fd2, line, sizeof(line));
     printf("[%s]\n", line);
 
     item_count++;
   }
+
+  read(fd2, line, sizeof(line));
+  printf("Your total price is: [%s]\n", line);
 
   close(fd1);
   close(fd2);
