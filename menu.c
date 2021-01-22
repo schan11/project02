@@ -35,6 +35,7 @@ int setup(){
   return choice;
 }
 
+//chooses category
 void choose_category(int start){
   char teas[] = "./teas";
   char desserts[] = "./desserts";
@@ -65,10 +66,6 @@ void order(){
 
     //go back to main menu if requested by customer (entering 0)
     const char *c = order;
-    if (strncmp(c, "0",1)==0) {
-      int main_menu = setup();
-      choose_category(main_menu);
-    }
 
     //remove new line character from end
     for (i=0; order[i]; i++){
@@ -77,6 +74,11 @@ void order(){
 
     //write the order to the system end
     write(fd1, order, sizeof(line));
+
+    if (strncmp(c, "0",1)==0) {
+      int main_menu = setup();
+      choose_category(main_menu);
+    }
 
     if (strncmp(order, "1",1)==0) {
       printf("Proceeding to checkout...\n");
