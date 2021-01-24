@@ -5,7 +5,7 @@ struct customer {
 	char first_name[100];
 	char last_name[100];
 	int credit_card;
-	int dining; // -1: delivery, 0: dine in, 1: pick up
+	int dining; // 1: delivery, 2: dine in, 3: pick up
 };
 
 struct customer *new_customer(char *, char *, int, int);

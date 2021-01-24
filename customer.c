@@ -50,11 +50,11 @@ int get_card(struct customer *cust) {
 }
 
 char* get_dining(struct customer *cust) {
-	if (cust->dining == -1)
+	if (cust->dining == 1)
 		return "delivery";
-	else if (cust->dining == 0)
+	else if (cust->dining == 2)
 		return "dine in";
-	else if (cust->dining == 1)
+	else if (cust->dining == 3)
 		return "pick up";
 	else
 		return "no dining option";
@@ -68,11 +68,11 @@ struct customer *checkout(struct customer *cust) {
 void print_customer(struct customer *cust) {
 	char dine[100];
 
-	if (cust->dining == -1)
+	if (cust->dining == 1)
 		strcpy(dine, "delivery");
-	else if (cust->dining == 0)
+	else if (cust->dining == 2)
 		strcpy(dine, "dine in");
-	else if (cust->dining == 1)
+	else if (cust->dining == 3)
 		strcpy(dine, "pick up");
 	else
 		strcpy(dine, "no dining option");
