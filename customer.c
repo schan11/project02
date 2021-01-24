@@ -4,7 +4,7 @@
 
 #include "customer.h"
 
-struct customer *new_customer(char *first, char *last, int card, int dine) {
+struct customer *new_customer(char *first, char *last, long card, int dine) {
 	struct customer *cust;
 
 	cust = malloc(sizeof(struct customer));
@@ -27,7 +27,7 @@ struct customer *modify_last_name(struct customer *cust, char *last) {
 	return cust;
 }
 
-struct customer *modify_card(struct customer *cust, int card) {
+struct customer *modify_card(struct customer *cust, long card) {
 	cust->credit_card = card;
 	return cust;
 }
@@ -45,7 +45,7 @@ char* get_last_name(struct customer *cust) {
 	return cust->last_name;
 }
 
-int get_card(struct customer *cust) {
+long get_card(struct customer *cust) {
 	return cust->credit_card;
 }
 
@@ -79,6 +79,6 @@ void print_customer(struct customer *cust) {
 
 	printf("First name: %s\n", cust->first_name);
 	printf("Last  name: %s\n", cust->last_name);
-	printf("Credit Card: %d\n", cust->credit_card);
+	printf("Credit Card: %lu\n", cust->credit_card);
 	printf("Dining Option: %s\n\n", dine);
 }

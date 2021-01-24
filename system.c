@@ -19,14 +19,14 @@
 int BUFFER_SIZE = 256;
 #define NUM_ITEMS 19
 
-void create_account(char* first, char* last, int card, int dining) {
+void create_account(char* first, char* last, long card, int dining) {
   printf("Before we proceed to checkout, we need some information from you.\n");
   printf("First name: ");
   scanf("%s", first);
   printf("Last name: ");
   scanf("%s", last);
   printf("Credit Card Number: ");
-  scanf("%d", &card);
+  scanf("%lu", &card);
   printf("Next, choose your dining option by entering the corresponding number:\n");
   printf("\t1. Delivery\n");
   printf("\t2. Dine In\n");
@@ -74,9 +74,9 @@ void confirm_account(struct customer *cust) {
           break;
         }
         if (input == 3) {
-          int card;
+          long card;
           printf("Enter your credit card number: ");
-          scanf("%d", &card);
+          scanf("%lu", &card);
           modify_card(cust, card);
           printf("Successfully modified credit card number...\n");
           break;
@@ -165,7 +165,7 @@ int main(){
   // create customer account
   char first_name[256];
   char last_name[256];
-  int credit_card;
+  long credit_card;
   int dining_option;
   create_account(first_name, last_name, credit_card, dining_option);
   struct customer *cust_1 = new_customer(first_name, last_name, credit_card, dining_option);
