@@ -161,9 +161,6 @@ int main(){
     cur_order = order_item;
   }
   print_list(cur_order);
-  //go through linked list, calculate price, print out entire order
-  price = get_price(cur_order);
-  printf("Total Price: %0.2lf\n", price);
 
   // create customer account
   char first_name[256];
@@ -173,8 +170,11 @@ int main(){
   create_account(first_name, last_name, credit_card, dining_option);
   struct customer *cust_1 = new_customer(first_name, last_name, credit_card, dining_option);
   confirm_account(cust_1);
+  
+  //go through linked list, calculate price, print out entire order
+  price = get_price(cur_order);
+  printf("Total Price: %0.2lf\n", price);
 
-  // 
   snprintf(line, BUFFER_SIZE, "%0.2lf", price);
   write(fd2, line, sizeof(line));
 
