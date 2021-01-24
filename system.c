@@ -166,8 +166,8 @@ int main(){
   printf("Total Price: %0.2lf\n", price);
 
   // create customer account
-  char* first_name;
-  char* last_name;
+  char first_name[256];
+  char last_name[256];
   int credit_card;
   int dining_option;
   create_account(first_name, last_name, credit_card, dining_option);
