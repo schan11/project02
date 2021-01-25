@@ -1,6 +1,6 @@
 # CAFE C
 
-by Serena Chan, Sunny Li, Kelly Zhou 
+by Serena Chan, Sunny Li, Kelly Zhou\ 
 Period 10
 
 ## Project Description:
@@ -38,7 +38,7 @@ Library Installation Instructions: N/A
 
 # Project Proposal (original, final updated version above)
 
-# Project Description:
+## Project Description:
 
 We will be working on a server/client system for a customer purchasing items in a store (ie. food). 
 We will display a menu of available items to purchase, then allow customers to input their item(s) of choice. 
@@ -46,14 +46,14 @@ After they are done purchasing, we will prompt the customers to enter their paym
 and we will keep a record of their purchases. We will try to implement this system for different types of shops. Depending on 
 the shop, there could also be a return system for the products. 
 
-# User Interface Description:
+## User Interface Description:
 
 When the client process is run, it will display a menu (and some commands for the user) and the user will input a command
 to access a certain service. Then, they will communicate through the command line to enter and remove items of purchase. They will
 indicate when they are finished purchasing, which will prompt them to checkout. After they input their payment information, a receipt
 of their purchases will display. 
 
-# Technical Design:
+## Technical Design:
 
   - Topics from Class:
 	
@@ -79,7 +79,7 @@ of their purchases will display.
   		
 		1. Structs to hold information about the customer (ie. payment information)
   
-# Timeline:
+## Timeline:
 
 1/15: Set up user interface and allow customers to place their orders
 
