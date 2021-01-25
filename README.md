@@ -1,7 +1,7 @@
 # CAFE C
 
 by Serena Chan, Sunny Li, Kelly Zhou\ 
-Period 10
+Period: 10
 
 ## Project Description:
 
