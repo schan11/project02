@@ -69,11 +69,11 @@ void print_customer(struct customer *cust) {
 	char dine[100];
 
 	if (cust->dining == 1)
-		strcpy(dine, "delivery");
+		strcpy(dine, "Delivery");
 	else if (cust->dining == 2)
-		strcpy(dine, "dine in");
+		strcpy(dine, "Dine in");
 	else if (cust->dining == 3)
-		strcpy(dine, "pick up");
+		strcpy(dine, "Pick up");
 	else
 		strcpy(dine, "no dining option");
 
