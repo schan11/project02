@@ -35,4 +35,6 @@
 ## 1/23/2021 (Saturday):
 
 ## 1/24/2021 (Sunday):
+- Completed all customer info, allowing customer to be prompted to create an account and modify their info (Sunny, 1:45 PM)
+- Added the above input for customers to the menu, switched functions from system to menu (Kelly, 7:50 PM)
 - Updated + finalized: README.md, DEVLOG.md (Serena, 9:30 PM)
