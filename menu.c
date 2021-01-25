@@ -87,12 +87,13 @@ void order(){
 
     if (strncmp(order, "E",1)==0) {
       printf("Proceeding to checkout...\n"); // exits ordering state
+      sleep(2);
       break;
     }
 
     fd2 = open("system_p", O_RDONLY);
     read(fd2, line, sizeof(line));
-    printf("[%s]\n", line);
+    //printf("[%s]\n", line);
 
     if (strncmp(line, "Error", sizeof(line)-1)==0){
       printf("This is not a valid order!\n");
@@ -105,6 +106,7 @@ void order(){
   read(fd2, line, sizeof(line));
   price = atof(line);
   printf("Your total price is: $%0.2lf\n", price);
+  sleep(2);
 
   close(fd1);
   close(fd2);
