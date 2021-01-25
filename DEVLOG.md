@@ -33,9 +33,12 @@
 - Hardcoded array, fixed issues with pointers in linked list, edited comments (Serena, 4:00 PM)
 
 ## 1/24/2021 (Sunday):
-- Fixed hanged credit card info from int to long 
+- Changed credit card info from int to long, fixed segmentation fault (Sunny) 
 - Completed all customer info, allowing customer to be prompted to create an account and modify their info (Sunny, 1:45 PM)
 - Added the above input for customers to the menu, switched functions from system to menu (Kelly, 7:50 PM)
 - Updated + finalized: README.md, DEVLOG.md (Serena, 9:30 PM)
 - Fixed account creation bug (credit card info and dining options weren't saved at first) (Sunny, 9:45 PM)
 - Fixed bugs and errors (KSS) 
+
+## 1/25/2021 (Monday):
+- Modified menu so that an error message will be printed when the customer inputs a number not on the menu, attempted to fix bugs, changed code so that correct final value will be printed (some exceptions) (Serena, 8:00 AM)
