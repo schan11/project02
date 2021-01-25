@@ -1,5 +1,5 @@
 all: menu.o system.o order.o customer.o
-	gcc -o menu menu.o customer.o
+	gcc -o menu menu.o customer.o order.o
 	gcc -o system system.o order.o
 
 menu.o: menu.c menu.h

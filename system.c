@@ -16,7 +16,7 @@ int BUFFER_SIZE = 256;
 
 int main(){
   char order[BUFFER_SIZE], line[BUFFER_SIZE];
-  int fd1, fd2, i;
+  int fd1, fd2, i, available;
   double cost, price;
   char * item_prices[NUM_ITEMS][2] = {
       {"1", "4.00"}, {"2", "3.50"}, {"3", "4:00"},
@@ -27,8 +27,6 @@ int main(){
       {"16", "5.50"}, {"17", "3.00"}, {"18", "4.00"},
       {"19", "4.00"}
   };
-  //printf("got here 1\n");
-
 
   mkfifo("system_p", 0644);
   fd1 = open("menu_p", O_RDONLY);
@@ -39,7 +37,9 @@ int main(){
   //printf("opened menu pipe for read\n");
 
   while (1){
+    available=1;
     read(fd1, order, sizeof(order));
+
     if (strncmp(order, "0",1)==0) {
        continue;
     }
@@ -49,13 +49,17 @@ int main(){
     }
 
     for (i=0; i<NUM_ITEMS; i++){
-      if (strncmp(order, item_prices[i][0], sizeof(order)-1)!=0){
-          printf("Sorry, we don't have this item available.\n"); // base case if customer inputs random characters not on menu
-        continue;
+      if (strncmp(order, item_prices[i][0], sizeof(order)-1)==0){
+          cost = atof(item_prices[i][1]);
+          available = 0;
+          break;
       }
-      else{
-        cost = atof(item_prices[i][1]); //convert cost (char *) to double
-      }
+    }
+    // base case if customer inputs random characters not on menu
+    if (available){
+      printf("Sorry, we don't have this item available.\n");
+      write(fd2, "Error", 6);
+      continue;
     }
 
     fd2 = open("system_p", O_WRONLY);
@@ -75,6 +79,8 @@ int main(){
 
   snprintf(line, BUFFER_SIZE, "%0.2lf", price);
   write(fd2, line, sizeof(line));
+
+  cur_order=free_list(cur_order);
 
   close(fd1);
   close(fd2);

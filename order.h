@@ -12,5 +12,7 @@ struct order * insert_order(struct order * first, char * i, double p);
 double get_price(struct order * order);
 void print_list(struct order * order);
 void display(struct order * order);
+void print_receipt();
+struct order * free_list(struct order *order);
 
 #endif

@@ -44,3 +44,19 @@ void print_list(struct order * order){
 void display(struct order * order){
 	printf("Item: %s\tPrice: %0.2lf\n", order->item, order->price);
 }
+
+void print_receipt(){
+  printf("helloooo\n");
+}
+
+struct order * free_list(struct order *order){
+	int i=1;
+	struct order *o;
+	while (order){
+		printf("Freeing node: %d\n", i++);
+		o=order->next;
+		free(order);
+		order=o;
+	}
+	return NULL;
+}

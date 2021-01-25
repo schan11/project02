@@ -52,6 +52,7 @@ void choose_category(int start){
 //allows customer to place their order
 void order(){
   int fd1, fd2, i, item_count=0, invalid_orders = 0;
+  double price;
   char order[BUFFER_SIZE], line[BUFFER_SIZE];
 
   //create and open client pipe for writing
@@ -78,17 +79,12 @@ void order(){
     //write the order to the system end
     write(fd1, order, sizeof(order));
 
-    if (strncmp(c, "0",1)==0) {
+    if (strncmp(order, "0",1)==0) {
       int main_menu = setup();
       choose_category(main_menu);
       continue;
     }
 
-    if (atoi(c) > 19 || atoi(c) < 0){
-        printf("This is not a valid order!\n");
-        invalid_orders++;
-    }
-      
     if (strncmp(order, "E",1)==0) {
       printf("Proceeding to checkout...\n"); // exits ordering state
       break;
@@ -98,12 +94,17 @@ void order(){
     read(fd2, line, sizeof(line));
     printf("[%s]\n", line);
 
+    if (strncmp(line, "Error", sizeof(line)-1)==0){
+      printf("This is not a valid order!\n");
+      continue;
+    }
+
     item_count++;
   }
 
   read(fd2, line, sizeof(line));
-  double final_price = atoi(line) - (invalid_orders * 4);
-  printf("Your total price is: [%f]\n", final_price);
+  price = atof(line);
+  printf("Your total price is: $%0.2lf\n", price);
 
   close(fd1);
   close(fd2);
@@ -194,22 +195,31 @@ void confirm_account(struct customer *cust) {
 
 //main
 int main(){
+  int i;
   //set up main menu, choose category, and allow customer to order
   int main_menu = setup();
   choose_category(main_menu);
   order();
 
 // create customer account
-  char first_name[256];
-  char last_name[256];
+  char first_name[BUFFER_SIZE];
+  char last_name[BUFFER_SIZE];
   long credit_card;
   int dining_option;
   create_account(first_name, last_name, &credit_card, &dining_option);
   struct customer *cust_1 = new_customer(first_name, last_name, credit_card, dining_option);
   confirm_account(cust_1);
 
+  // char choice[5];
+  // printf("Would you like your receipt? (Y/N) ");
+  // fgets(choice, sizeof(choice), stdin);
+  // for (i=0; choice[i]; i++){
+  //   if (choice[i]=='\n') choice[i]='\0';
+  // }
+  // if (strncmp(choice, "Y", 1)==0) print_receipt();
+
   // possibly include customer name
-  printf("Thank you, %s %s, for ordering at Cafe C! See you next time!\n", get_first_name(cust_1), get_last_name(cust_1));
+  printf("\nThank you, %s %s, for ordering at Cafe C! See you next time!\n", get_first_name(cust_1), get_last_name(cust_1));
 
   return 0;
 }
