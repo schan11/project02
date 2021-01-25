@@ -42,3 +42,4 @@
 
 ## 1/25/2021 (Monday):
 - Modified menu so that an error message will be printed when the customer inputs a number not on the menu, attempted to fix bugs, changed code so that correct final value will be printed (some exceptions) (Serena, 8:00 AM)
+-Fixed bugs for users entering invalid inputs during the ordering process, attempted to print the receipt for the customer (Kelly 1:10 AM)
