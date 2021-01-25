@@ -29,8 +29,10 @@ Library Installation Instructions: N/A
 
 ## Bugs (so far): 
 
-- Not really a bug, but when the customer enters a random value or symbol not on the menu, an error is not reported
-- Following this issue, each invalid order charges $4.00
+- Price is recorded for any value the customer inputs, including a random value not on the menu
+- If the customer enters a decimal or symbol, an error is not reported (However, an error is correctly reported for a number out of range of the menu)
+- If the customer inputs an invalid order (out of range of the menu) after a valid order (on the menu), that value will assume the price of the previous order. For now, the correct total price will be printed only if an item costing $4.00 precedes invalid orders.
+- If an invalid credit card number is inputted, the system will not allow you to input a dining option.
 
 ---
 
