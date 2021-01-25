@@ -3,11 +3,11 @@
 by Serena Chan, Sunny Li, Kelly Zhou 
 Period 10
 
-# Project Description:
+## Project Description:
 
 Welcome to the grand opening of Cafe C! We sell a wide variety of refreshing drinks, Japanese-themed appetizers, and delectable desserts. With our interactive server/client system, customers will be able to order a high-quality meal with easy to follow, step-by-step instructions. Our cafe ensures a safe transaction; we use a fail-proof system that will confirm your information after you've entered it, and even allows you to update your information if necessary. 
 
-# Library List:
+## Library List:
 
 - <stdio.h>
 - <stdlib.h>
@@ -21,20 +21,20 @@ Welcome to the grand opening of Cafe C! We sell a wide variety of refreshing dri
 
 Library Installation Instructions: N/A
 
-# Instructions:
+## Instructions:
 
 1. Compile and make, then type ./menu into terminal. Our main menu will be displayed, with provided instructions to choose your preferred food category.
 2. After doing so, create a new tab in terminal and type ./system. This will open the pipes, allowing us to receive and keep track of your info.
 3. Follow the printed instructions and input information as prompted.
 
 
-# Bugs (so far): 
+## Bugs (so far): 
 
 - Issues with recording card number and dining info (but no issue when modifying account)
 - Not really a bug, but when the customer enters a random value or symbol not on the menu, an error is not reported
 - Following this issue, each invalid order charges $4.00
 
-==================================================================================================================================================================
+---
 
 # Project Proposal (original, final updated version above)
 
