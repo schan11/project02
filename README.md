@@ -29,7 +29,6 @@ Library Installation Instructions: N/A
 
 ## Bugs (so far): 
 
-- Issues with recording card number and dining info (but no issue when modifying account)
 - Not really a bug, but when the customer enters a random value or symbol not on the menu, an error is not reported
 - Following this issue, each invalid order charges $4.00
 
