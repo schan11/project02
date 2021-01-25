@@ -50,7 +50,7 @@ int main(){
 
     for (i=0; i<NUM_ITEMS; i++){
       if (strncmp(order, item_prices[i][0], sizeof(order)-1)!=0){
-          //printf("Sorry, we don't have this item available.\n"); // base case if customer inputs random characters not on menu
+          printf("Sorry, we don't have this item available.\n"); // base case if customer inputs random characters not on menu
         continue;
       }
       else{

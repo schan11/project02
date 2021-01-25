@@ -51,7 +51,7 @@ void choose_category(int start){
 
 //allows customer to place their order
 void order(){
-  int fd1, fd2, i, item_count=0;
+  int fd1, fd2, i, item_count=0, invalid_orders = 0;
   char order[BUFFER_SIZE], line[BUFFER_SIZE];
 
   //create and open client pipe for writing
@@ -84,8 +84,13 @@ void order(){
       continue;
     }
 
+    if (atoi(c) > 19 || atoi(c) < 0){
+        printf("This is not a valid order!\n");
+        invalid_orders++;
+    }
+      
     if (strncmp(order, "E",1)==0) {
-      printf("Proceeding to checkout...\n");
+      printf("Proceeding to checkout...\n"); // exits ordering state
       break;
     }
 
@@ -97,7 +102,8 @@ void order(){
   }
 
   read(fd2, line, sizeof(line));
-  printf("Your total price is: [%s]\n", line);
+  double final_price = atoi(line) - (invalid_orders * 4);
+  printf("Your total price is: [%f]\n", final_price);
 
   close(fd1);
   close(fd2);
