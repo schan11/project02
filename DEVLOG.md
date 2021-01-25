@@ -1,4 +1,4 @@
-# DEVLOG NOT FINISHED FEEL FREE TO ADD
+# DEVLOG 
 
 ## note:
 - KSS indicates all three group members, typically under breakout room discussion during class
@@ -32,9 +32,10 @@
 - Discussed final touches to the project, including extra additions to add over the weekend after functions run smoothly (KSS, 2:00 PM)
 - Hardcoded array, fixed issues with pointers in linked list, edited comments (Serena, 4:00 PM)
 
-## 1/23/2021 (Saturday):
-
 ## 1/24/2021 (Sunday):
+- Fixed hanged credit card info from int to long 
 - Completed all customer info, allowing customer to be prompted to create an account and modify their info (Sunny, 1:45 PM)
 - Added the above input for customers to the menu, switched functions from system to menu (Kelly, 7:50 PM)
 - Updated + finalized: README.md, DEVLOG.md (Serena, 9:30 PM)
+- Fixed account creation bug (credit card info and dining options weren't saved at first) (Sunny, 9:45 PM)
+- Fixed bugs and errors (KSS) 
