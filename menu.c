@@ -103,20 +103,20 @@ void order(){
   close(fd2);
 }
 
-void create_account(char* first, char* last, long card, int dining) {
+void create_account(char *first, char *last, long *card, int *dining) {
   printf("Before we proceed to checkout, we need some information from you.\n");
   printf("First name: ");
   scanf("%s", first);
   printf("Last name: ");
   scanf("%s", last);
   printf("Credit Card Number: ");
-  scanf("%lu", &card);
+  scanf("%lu", card);
   printf("Next, choose your dining option by entering the corresponding number:\n");
   printf("\t1. Delivery\n");
   printf("\t2. Dine In\n");
   printf("\t3. Pick Up\n");
   printf("Dining Option: ");
-  scanf("%d", &dining);
+  scanf("%d", dining);
   printf("Thank you! Your information has been safely recorded!\n");
 }
 
@@ -198,7 +198,7 @@ int main(){
   char last_name[256];
   long credit_card;
   int dining_option;
-  create_account(first_name, last_name, credit_card, dining_option);
+  create_account(first_name, last_name, &credit_card, &dining_option);
   struct customer *cust_1 = new_customer(first_name, last_name, credit_card, dining_option);
   confirm_account(cust_1);
 
